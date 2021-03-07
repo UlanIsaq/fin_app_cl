@@ -10,8 +10,8 @@ public class Main {
 Scanner scn = new Scanner(System.in);
 
         UI ui = new UI();
-       IncomeService incomeService = new IncomeService(3);
-        IncomeExpenses incomeExpenses = new IncomeExpenses(3);
+       IncomeService incomeService = new IncomeService();
+        IncomeExpenses incomeExpenses = new IncomeExpenses();
 
         do{
             System.out.println(ui.mainMenu());
@@ -53,11 +53,11 @@ Scanner scn = new Scanner(System.in);
                     break;
                 case 3:
                     System.out.println("List income is selected");
-                    System.out.println(Arrays.toString(incomeService.getAllIncomes()));
+                    System.out.println(incomeService);
                     break;
                 case 4:
                     System.out.println("List expenses is selected");
-                    System.out.println(Arrays.toString(incomeExpenses.getAllExpenses()));
+                    System.out.println(incomeExpenses);
                     break;
                 default:
                     System.out.println("please use numbers between 1 and 4");

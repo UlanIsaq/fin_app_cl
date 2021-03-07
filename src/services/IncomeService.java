@@ -1,31 +1,36 @@
 package services;
 
+import java.util.ArrayList;
+
 public class IncomeService {
-    private float[] incomes;
-    private int incomeLevel;
 
-
-    public IncomeService(int sizeIncome) {
-        incomes = new float[sizeIncome];
-        incomeLevel = 0;
-    }
+    ArrayList<Float> incomesList = new ArrayList<>();
 
     public boolean insertIncome(float value) {
-        if (incomeLevel < incomes.length) {
-            incomes[incomeLevel] = value;
-            incomeLevel++;
-            return true;
-        } else {
-            return false;
-        }
+        return incomesList.add(value);
     }
 
-    public float[] getAllIncomes() {
-
-        return incomes;
+    public ArrayList<Float> getAllIncomes() {
+        return incomesList;
     }
 
     public int numberOfIncomes() {
-        return incomeLevel;
+        return incomesList.size();
+    }
+    private Float calculateAverage(){
+        return incomesList.isEmpty() ? 0.0f : calculateSum()/incomesList.size();
+    }
+    private Float calculateSum(){
+        float sum = 0.0f;
+        for (Float element: incomesList) {
+            sum +=element;
+        }
+        return sum;
+    }
+
+    @Override
+    public String toString() {
+        return "incomesList=" + incomesList
+                + "Average of: "+calculateAverage();
     }
 }
